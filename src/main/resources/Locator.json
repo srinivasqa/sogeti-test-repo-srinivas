@@ -1,0 +1,26 @@
+{
+  "btnDeclineOptionalCookies": "//button[contains(text(), 'Decline optional cookies')]",
+  "Services": "(//div[@class='wrapper']//span)[3]",
+  "linkAutomation": "//a[@class='subMenuLink' and contains(text(), 'Automation')]",
+  "AutomationPage": "//span[contains(text(),'Automation')]",
+  "ContactUs": "//h2[@class='Form__Title' and contains(text(), 'Contact us:')]",
+  "First Name": "//label[contains(text(),'First Name')]/following-sibling::input",
+  "Last Name": "//label[contains(text(),'Last Name')]/following-sibling::input",
+  "Email": "//label[contains(text(),'Email')]/following-sibling::input",
+  "Phone": "//label[contains(text(),'Phone')]/following-sibling::input",
+  "Message": "//label[contains(text(),'Message')]/following-sibling::textarea",
+  "checkBox": "//input[@type='checkbox' and @value='I agree']",
+  "captchaFrame": "//iframe[@title='reCAPTCHA']",
+  "captchaCheckBox": "div.recaptcha-checkbox-checkmark",
+  "Worldwide": "//span[@aria-label='Worldwide' and contains(text(), 'Worldwide')]",
+  "countryList": "//div[@id='country-list-id']",
+  "Submit": "//button[@name='submit' and @type='submit']",
+
+  "DocumentName": "//input[@type='text' and @maxlength='50']",
+  "BrowseForDocuments": "//div[contains(text(),'Browse for documents')]",
+  "AddDocument": "//input[@type='file' and @name='file']",
+  "Form": "//form[contains(@target,'File')]",
+  "uploadSuccesful": "//div[contains(@style, ('rwt-resources/generated/e358c5e1.png'))]",
+  "uploadOK": "//*[contains(text(),'OK')]",
+  "SaveAttachment": "//div[contains(@style, ('rwt-resources/generated/71cd0a7c.png'))]"
+}
