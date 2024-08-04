@@ -17,7 +17,7 @@ Technically most of the captcha's cannot be automated as they contains images an
 
 **Prerequisites to execute script:**
 1. Maven.
-2. Java.
+2. Java 11 or higher.
 
 **Steps to execute script:**
 
