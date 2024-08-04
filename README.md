@@ -9,7 +9,7 @@ Test Failed: **1**
 **Explanation for failed testcase:** 
 One testcase will is expected to be failed, because to submit the contact form successfully, user need to verify the captcha.
 
-Technically most of the captcha's cannot be automated as they contains images and most of the times human observation is needed.
+Technically most of the captcha's cannot be automated as they contains images and most of the times human intervention is needed.
 
 **Suggestion/Workaround for Automating captcha:**
 1. Captcha's can be disabled in QA environment.
