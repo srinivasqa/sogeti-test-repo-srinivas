@@ -10,7 +10,7 @@ Feature:Sogeti API Test task
     Given I send a GET request to the Zippopotam API for country "<country>" and postal code "<postal_code>"
     Then the response status code should be 200
     And the response content type should be JSON
-    And the response time should be less than 1 second
+    And the response time should be less than 1000 milliseconds
     And the response should contain place name "<place_name>"
 
     Examples:

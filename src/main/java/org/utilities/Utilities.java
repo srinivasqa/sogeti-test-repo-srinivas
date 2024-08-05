@@ -1,24 +1,12 @@
 package org.utilities;
 
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.en.When;
-import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.json.JSONObject;
-
-
-import org.junit.Assert;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -27,9 +15,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.Duration;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 import static org.junit.Assert.assertEquals;
 import java.awt.Color;
@@ -45,15 +31,17 @@ public class Utilities {
 
 
     public String getElement(String finalxpath) {
-        String content = null;
-        try {
-            content = new String(Files.readAllBytes(Paths.get("src/main/resources/Locator.json")));
 
+        String strXpath = null;
+        try {
+          String  content = new String(Files.readAllBytes(Paths.get("src/main/resources/Locator.json")));
+
+
+        JSONObject json = new JSONObject(content);
+        strXpath = json.getString(finalxpath);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        JSONObject json = new JSONObject(content);
-        String strXpath = json.getString(finalxpath);
         return strXpath;
     }
     public static String getPropertiesFileValue(String key) {
@@ -73,7 +61,7 @@ public class Utilities {
 
     public void getUrl(String url) {
         driver.get(url);
-     //   btnClick(getElement("btnDeclineOptionalCookies"));
+
     }
 
     public void visibilityOfElement(WebElement element) {
@@ -96,7 +84,6 @@ public class Utilities {
             if (button.isDisplayed()) {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
                 js.executeScript("arguments[0].click();", button);
-            } else {
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -157,7 +144,7 @@ public class Utilities {
     }
 
     public void sendKeys(String strPath, String text) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(90));
+
         WebElement element = driver.findElement(By.xpath(strPath));
         visibilityOfElement(element);
         element.clear();
@@ -229,7 +216,7 @@ public class Utilities {
                 if (href != null && !href.isEmpty()) {
                     System.out.println("Checking link: " + href);
                     int responseCode = getResponseCode(href);
-                    Assert.assertTrue(responseCode == 200 );
+                    assertEquals(200, responseCode);
                     System.out.println("Result: "+href + " returned positive response");
                 }
             }

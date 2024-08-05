@@ -4,9 +4,8 @@ import io.restassured.RestAssured;
 import io.restassured.path.json.exception.JsonPathException;
 import io.restassured.response.Response;
 import org.junit.Assert;
-
 import static io.restassured.RestAssured.given;
-import static org.junit.Assert.assertTrue;
+
 
 public class ApiUtilities {
 

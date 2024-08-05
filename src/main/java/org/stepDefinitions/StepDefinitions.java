@@ -7,20 +7,13 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Assert;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.utilities.ApiUtilities;
 import org.utilities.RandomDataGenerator;
 import org.utilities.Utilities;
-
-import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
-
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.fail;
-import static org.utilities.Utilities.getPropertiesFileValue;
+
 
 public class StepDefinitions {
 
@@ -30,6 +23,7 @@ public class StepDefinitions {
     private Response response;
     private String country;
     private String postalCode;
+
 
     @When("I open url {string}")
     public void i_open_the_url(String strUrl) {
@@ -74,21 +68,27 @@ public class StepDefinitions {
     @Given("I enter random input in {string} field")
     public void i_enter_random_input_to_textbox(String element){
 
-        if(element.equals("First Name")){
-         String firstName = RandomDataGenerator.getRandomFirstName();
-         util.sendKeys(util.getElement(element),firstName);
-        }else if(element.equals("Last Name")){
-            String lastName = RandomDataGenerator.getRandomLastName();
-            util.sendKeys(util.getElement(element),lastName);
-        }else if(element.equals("Email")){
-            String email = RandomDataGenerator.generateRandomEmail(RandomDataGenerator.getRandomFirstName(),RandomDataGenerator.getRandomLastName());
-            util.sendKeys(util.getElement(element),email);
-        }else if(element.equals("Phone")){
-            String phone = RandomDataGenerator.generateRandomPhoneNumber();
-            util.sendKeys(util.getElement(element),phone);
-        }else if(element.equals("Message")){
-            String message = RandomDataGenerator.generateRandomMessage();
-            util.sendKeys(util.getElement(element),message);
+        switch (element) {
+            case "First Name":
+                String firstName = RandomDataGenerator.getRandomFirstName();
+                util.sendKeys(util.getElement(element), firstName);
+                break;
+            case "Last Name":
+                String lastName = RandomDataGenerator.getRandomLastName();
+                util.sendKeys(util.getElement(element), lastName);
+                break;
+            case "Email":
+                String email = RandomDataGenerator.generateRandomEmail(RandomDataGenerator.getRandomFirstName(), RandomDataGenerator.getRandomLastName());
+                util.sendKeys(util.getElement(element), email);
+                break;
+            case "Phone":
+                String phone = RandomDataGenerator.generateRandomPhoneNumber();
+                util.sendKeys(util.getElement(element), phone);
+                break;
+            case "Message":
+                String message = RandomDataGenerator.generateRandomMessage();
+                util.sendKeys(util.getElement(element), message);
+                break;
         }
 
     }
@@ -150,9 +150,9 @@ public class StepDefinitions {
         System.out.println("Content Type is as expected: "+ ContentType.JSON.toString()+ "Actual content Type: "+response.getContentType());
     }
 
-    @And("the response time should be less than {int} second")
-    public void verifyResponseTime(int seconds) {
-        Assert.assertTrue(response.getTime() < 1000);
+    @And("the response time should be less than {int} milliseconds")
+    public void verifyResponseTime(int milliSeconds) {
+        Assert.assertTrue(response.getTime() < milliSeconds);
         System.out.println("Resposne expected time: <1000 ms " + "Response Actual time taken: "+response.getTime() + "ms");
     }
 
@@ -169,7 +169,7 @@ public class StepDefinitions {
             Assert.assertEquals(expectedPlaceName, actualPlaceName);
         } else {
             // If the list is empty, fail the test
-            fail("No place names found for postal code " + postalCode);
+            fail("No place names found for postal code ");
         }
 
 
