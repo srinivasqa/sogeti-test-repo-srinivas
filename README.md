@@ -34,5 +34,15 @@ Technically most of the captcha's cannot be automated as they contains images an
 3. Open "TestRunner" class.
 4. Right click and select "Run".
 
-   
+**Note:**
+
+ The current script will invoke chrome browser.
+ 
+ In case of changing the browser, navigate to \src\main\config.
+ 
+ Open "Config.properties" and replace the "browser" property with keywords same like below.
+ 
+     chrome
+     firefox
+     edge
 
