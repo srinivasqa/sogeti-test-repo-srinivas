@@ -1,5 +1,4 @@
-Feature:Sogeti API Test
-
+Feature:Sogeti API Test task
 
   Scenario:API_Test_TC001 Verify response time and
     Given I trigger a GET call to url "http://api.zippopotam.us" with endpoint "/de/bw/stuttgart"

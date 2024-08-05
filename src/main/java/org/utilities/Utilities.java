@@ -2,9 +2,11 @@ package org.utilities;
 
 
 import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.json.JSONObject;
+
 
 import org.junit.Assert;
 import org.openqa.selenium.*;
@@ -34,56 +36,13 @@ import java.awt.Color;
 
 public class Utilities {
 
-    private static WebDriver driver;
+    public static WebDriver driver;
     private Actions action;
 
     public String colorName1=null;
     public String colorName2=null;
 
-    public void launchBrowser(String browserType) {
-        switch (browserType) {
-            case "chrome":
-                ChromeOptions options = new ChromeOptions();
-                options.addArguments("enable-automation");
-                options.addArguments("--no-sandbox");
-                options.addArguments("--disable-extensions");
-                options.addArguments("--dns-prefetch-disable");
-                options.addArguments("--disable-gpu");
-                options.setHeadless(false);
-                options.addArguments("start-maximized");
-                options.addArguments("disable-infobars");
-                options.addArguments("--disable-gpu");
-                options.addArguments("--disable-dev-shm-usage");
-                options.addArguments("--no-sandbox");
-                options.addArguments("--disable-in-process-stack-traces");
-                options.addArguments("--disable-logging");
-                options.addArguments("--log-level=3");
 
-                WebDriverManager.chromedriver().clearDriverCache().setup();
-                driver = new ChromeDriver(options);
-                break;
-            case "firefox":
-                WebDriverManager.firefoxdriver().setup();
-                driver = new FirefoxDriver();
-                break;
-            case "edge":
-
-                WebDriverManager.edgedriver().clearDriverCache().setup();
-
-                EdgeOptions edgeOptions = new EdgeOptions();
-                edgeOptions.addArguments("--disable-notifications");
-
-                driver = new EdgeDriver();
-
-
-                break;
-            default:
-                break;
-        }
-        driver.manage().deleteAllCookies();
-        driver.manage().getCookies();
-        driver.manage().window().maximize();
-    }
 
     public String getElement(String finalxpath) {
         String content = null;

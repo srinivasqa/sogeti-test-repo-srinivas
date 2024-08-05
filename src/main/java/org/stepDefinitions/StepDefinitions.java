@@ -31,23 +31,17 @@ public class StepDefinitions {
     private String country;
     private String postalCode;
 
-    @Given("I launch browser")
-    public void the_browser_is_launched() {
-        util.launchBrowser(getPropertiesFileValue("browser"));
-
-    }
-
     @When("I open url {string}")
     public void i_open_the_url(String strUrl) {
         util.getUrl(strUrl);
     }
 
-    @When("I mouse hover on {string}")
+    @And("I mouse hover on {string}")
     public void i_MouseHover(String element){
         util.mouseHover(element);
     }
 
-    @When("I click on {string}")
+    @And("I click on {string}")
     public void i_click(String element){
         util.btnClick(element);
     }

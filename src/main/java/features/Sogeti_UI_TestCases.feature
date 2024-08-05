@@ -1,15 +1,15 @@
+@sogeti_UI
 Feature:Sogeti UI Test task
 
   Background: prerequistes to tests
-    When I launch browser
     Given I open url "https://www.sogeti.com/"
-    When I click on "btnDeclineOptionalCookies"
+    And I click on "btnDeclineOptionalCookies"
 
   Scenario:UI_Test_TC001 Verify Services and Automation state is selected
     When I mouse hover on "Services"
     And I click on "linkAutomation"
     Then I verify if the element "AutomationPage" contains text "Automation"
-    When I mouse hover on "Services"
+    And I mouse hover on "Services"
     Then I verify if elements "Services" and "linkAutomation" are selected
 
   Scenario:UI_Test_TC002 Verify user fills contact form and submit
