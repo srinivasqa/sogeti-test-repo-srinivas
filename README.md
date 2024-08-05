@@ -21,14 +21,6 @@ Technically most of the captcha's cannot be automated as they contains images an
 
 **Steps to execute script:**
 
-**Method 1:**
-1. Navigate to folder where "pom.xml" is present.
-2. Open command prompt.
-3. Run command "mvn clean"
-4. Run command "mvn build"
-5. Run command "mvn test"
-
-**Method 2**
 1. Import project in IDE(Eclipse, IntelliJ) as maven project.
 2. Navigate to "\src\test\java\org\runner".
 3. Open "TestRunner" class.
