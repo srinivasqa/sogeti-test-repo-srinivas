@@ -1,6 +1,7 @@
 package org.utilities;
 
 import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
 import io.restassured.path.json.exception.JsonPathException;
 import io.restassured.response.Response;
 import org.junit.Assert;
@@ -57,6 +58,42 @@ public class ApiUtilities {
 
            Assert.assertEquals(expectedValue, actualValue);
             System.out.println("Result: Expected: "+ expectedValue +" | Actual: "+actualValue   );
+
+        } catch (JsonPathException e) {
+            System.err.println("JSON Path Exception: " + e.getMessage());
+        } catch (AssertionError e) {
+            System.err.println("Assertion Error: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("An unexpected error occurred: " + e.getMessage());
+        }
+
+    }
+
+    public void extractPlaceName(String expectedPostCode, String expectedPlaceName) {
+
+        try {
+            String strResponseBody = response.getBody().asString();
+            JsonPath js = new JsonPath(strResponseBody);
+
+            int count = js.getInt("places.'post code'.size()");
+
+            String actualPlaceName = null;
+            for (int i = 0; i < count; i++) {
+                String actualPostCode = js.getString("places.'post code'[" + i + "]");
+
+                if (actualPostCode.equals(expectedPostCode)) {
+
+                    actualPlaceName = js.getString("places.'place name'[" + i + "]");
+
+                    if (actualPlaceName.equals(expectedPlaceName)) {
+
+                        System.out.println("place name : " + actualPlaceName + " found for postCode " + actualPostCode);
+                        break;
+                    }
+
+                }
+            }
+            Assert.assertEquals(expectedPlaceName, actualPlaceName);
 
         } catch (JsonPathException e) {
             System.err.println("JSON Path Exception: " + e.getMessage());

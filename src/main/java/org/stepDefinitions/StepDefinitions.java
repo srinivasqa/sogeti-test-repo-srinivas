@@ -175,4 +175,10 @@ public class StepDefinitions {
 
     }
 
+    @Then("I verify if post code {string} has place name as {string}")
+    public void i_verify_placeName_from_response(String placeName,String postCode){
+
+        apiUtilities.extractPlaceName(placeName,postCode);
+    }
+
 }

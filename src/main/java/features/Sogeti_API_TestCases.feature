@@ -4,7 +4,7 @@ Feature:Sogeti API Test task
     Given I trigger a GET call to url "http://api.zippopotam.us" with endpoint "/de/bw/stuttgart"
     Then I verify if "country" field contains the value as "Germany"
     Then I verify if "state" field contains the value as "Baden-Württemberg"
-    Then I verify if "places.find { it.'post code' == '70597' }.'place name'" field contains the value as "Stuttgart Degerloch"
+    Then I verify if post code "70597" has place name as "Stuttgart Degerloch"
 
   Scenario Outline:API_Test_TC002 Verify place names for various postal codes
     Given I send a GET request to the Zippopotam API for country "<country>" and postal code "<postal_code>"
