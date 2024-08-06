@@ -14,13 +14,5 @@
   "captchaCheckBox": "div.recaptcha-checkbox-checkmark",
   "Worldwide": "//span[@aria-label='Worldwide' and contains(text(), 'Worldwide')]",
   "countryList": "//div[@id='country-list-id']",
-  "Submit": "//button[@name='submit' and @type='submit']",
-
-  "DocumentName": "//input[@type='text' and @maxlength='50']",
-  "BrowseForDocuments": "//div[contains(text(),'Browse for documents')]",
-  "AddDocument": "//input[@type='file' and @name='file']",
-  "Form": "//form[contains(@target,'File')]",
-  "uploadSuccesful": "//div[contains(@style, ('rwt-resources/generated/e358c5e1.png'))]",
-  "uploadOK": "//*[contains(text(),'OK')]",
-  "SaveAttachment": "//div[contains(@style, ('rwt-resources/generated/71cd0a7c.png'))]"
+  "Submit": "//button[@name='submit' and @type='submit']"
 }
