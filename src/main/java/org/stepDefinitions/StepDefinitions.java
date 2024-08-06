@@ -160,7 +160,6 @@ public class StepDefinitions {
     public void verifyPlaceName(String expectedPlaceName) {
 
         String strResponse = response.asString();
-        System.out.println(strResponse);
         List<String> placeNames = response.jsonPath().getList("places.'place name'");
 
         if (!placeNames.isEmpty()) {
