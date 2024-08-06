@@ -28,7 +28,7 @@ Technically most of the captcha's cannot be automated as they contains images an
 4. Right click and select "Run".
 
 **Method 2:**
-1. In any command terminal naviagate to the folder which contains pom.xml file.
+1. In any command terminal navigate to the folder which contains pom.xml file.
 2. Run below commands:
 
     1) **mvn clean**
