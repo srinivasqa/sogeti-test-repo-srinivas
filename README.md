@@ -7,7 +7,7 @@ Tests Passed: **6**
 Test Failed: **1**
 
 **Explanation for failed testcase:** 
-One testcase will is expected to be failed, because to submit the contact form successfully, user need to verify the captcha.
+One testcase is expected to be failed, because to submit the contact form successfully, user need to verify the captcha.
 
 Technically most of the captcha's cannot be automated as they contains images and most of the times human intervention is needed.
 
