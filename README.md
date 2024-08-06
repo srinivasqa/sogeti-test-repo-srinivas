@@ -20,11 +20,20 @@ Technically most of the captcha's cannot be automated as they contains images an
 2. Java 11 or higher version.
 
 **Steps to execute script:**
+**Method 1:**
 
 1. Import project in IDE(Eclipse, IntelliJ) as maven project.
 2. Navigate to "\src\test\java\org\runner".
 3. Open "TestRunner" class.
 4. Right click and select "Run".
+
+**Method 2:**
+1. In any command terminal naviagate to the folder which contains pom.xml file.
+2. Run below commands:
+
+    1) **mvn clean**
+   
+    2) **mvn test**
 
 **Note:**
 
