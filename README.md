@@ -20,6 +20,7 @@ Technically most of the captcha's cannot be automated as they contains images an
 2. Java 11 or higher version.
 
 **Steps to execute script:**
+
 **Method 1:**
 
 1. Import project in IDE(Eclipse, IntelliJ) as maven project.
