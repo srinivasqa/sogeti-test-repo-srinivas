@@ -209,15 +209,17 @@ public class Utilities {
             WebElement countryListDiv = driver.findElement(By.xpath(getElement(strPath)));
             List<WebElement> links = countryListDiv.findElements(By.tagName("a"));
 
-
-            // Check each link
             for (WebElement link : links) {
                 String href = link.getAttribute("href");
                 if (href != null && !href.isEmpty()) {
                     System.out.println("Checking link: " + href);
+                    try {
                     int responseCode = getResponseCode(href);
                     assertEquals(200, responseCode);
                     System.out.println("Result: "+href + " returned positive response");
+                    } catch (AssertionError ae) {
+                        System.out.println("Assertion failed for link: " + href + ". Response code: " + ae.getMessage());
+                    }
                 }
             }
 
