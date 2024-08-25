@@ -159,7 +159,9 @@ public class Utilities {
         driver.switchTo().frame(iframe);
 
         WebElement element = driver.findElement(By.cssSelector(getElement("captchaCheckBox")));
-        element.click();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", element);
+        driver.switchTo().defaultContent();
     }
 
     public void collectLinks(String strPath) {
