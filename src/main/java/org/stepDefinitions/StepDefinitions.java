@@ -167,7 +167,6 @@ public class StepDefinitions {
             System.out.println();
             Assert.assertEquals(expectedPlaceName, actualPlaceName);
         } else {
-            // If the list is empty, fail the test
             fail("No place names found for postal code ");
         }
 
@@ -178,6 +177,25 @@ public class StepDefinitions {
     public void i_verify_placeName_from_response(String placeName,String postCode){
 
         apiUtilities.extractPlaceName(placeName,postCode);
+    }
+
+    @Then("I verify response status code should be {int}")
+    public void iVerifyStatusCode(int statusCode) {
+        Assert.assertEquals(statusCode,ApiUtilities.response.getStatusCode());
+
+    }
+
+    @Then("I verify if response time should be less than {int} milliseconds")
+    public void iVerifyResponseTime(int milliSeconds) {
+        Assert.assertTrue(ApiUtilities.response.getTime() < milliSeconds);
+        System.out.println("Resposne expected time: <1000 ms " + "Response Actual time taken: "+ApiUtilities.response.getTime() + "ms");
+    }
+
+    @Then("I verify if response content type is {string}")
+    public void iVerifyContentType(String contentType){
+
+        Assert.assertEquals(contentType, ApiUtilities.response.getContentType());
+
     }
 
 }

@@ -11,33 +11,18 @@ import static io.restassured.RestAssured.given;
 public class ApiUtilities {
 
 
-    private Response response;
-    private String responseBody;
+    public static Response response;
     public void getReqResBuilder(String url, String endpoint){
 
         RestAssured.baseURI = url;
 
         try {
-            // Send request and capture the response
             response =
                     given().
                             when().
                             get(endpoint).
                             then().
                             extract().response();
-
-            responseBody = response.getBody().asString();
-
-            Assert.assertEquals(200, response.getStatusCode());
-            System.out.println("Response code is as expected: "+ response.getStatusCode());
-
-            Assert.assertEquals("application/json", response.getContentType());
-            System.out.println("Content Type is as expected: "+ response.getContentType());
-
-            Assert.assertTrue(response.getTime() < 1000);
-            System.out.println("Resposne expected time: <1000 ms " + "Response Actual time taken: "+response.getTime() + "ms");
-
-            System.out.println("Response Body : "+responseBody);
 
         } catch (AssertionError e) {
             System.err.println("Assertion Error: " + e.getMessage());
@@ -61,8 +46,6 @@ public class ApiUtilities {
 
         } catch (JsonPathException e) {
             System.err.println("JSON Path Exception: " + e.getMessage());
-        } catch (AssertionError e) {
-            System.err.println("Assertion Error: " + e.getMessage());
         } catch (Exception e) {
             System.err.println("An unexpected error occurred: " + e.getMessage());
         }
@@ -97,9 +80,7 @@ public class ApiUtilities {
 
         } catch (JsonPathException e) {
             System.err.println("JSON Path Exception: " + e.getMessage());
-        } catch (AssertionError e) {
-            System.err.println("Assertion Error: " + e.getMessage());
-        } catch (Exception e) {
+        }  catch (Exception e) {
             System.err.println("An unexpected error occurred: " + e.getMessage());
         }
 

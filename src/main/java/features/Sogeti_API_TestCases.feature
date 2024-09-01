@@ -2,6 +2,9 @@ Feature:Sogeti API Test task
 
   Scenario:API_Test_TC001 Verify response time and
     Given I trigger a GET call to url "http://api.zippopotam.us" with endpoint "/de/bw/stuttgart"
+    Then I verify response status code should be 200
+    Then I verify if response content type is "application/json"
+    Then I verify if response time should be less than 1000 milliseconds
     Then I verify if "country" field contains the value as "Germany"
     Then I verify if "state" field contains the value as "Baden-Württemberg"
     Then I verify if post code "70597" has place name as "Stuttgart Degerloch"
