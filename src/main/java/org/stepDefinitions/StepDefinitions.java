@@ -150,10 +150,10 @@ public class StepDefinitions {
         System.out.println("Content Type is as expected: "+ ContentType.JSON.toString()+ "Actual content Type: "+response.getContentType());
     }
 
-    @And("the response time should be less than {int} milliseconds")
-    public void verifyResponseTime(int milliSeconds) {
-        Assert.assertTrue(response.getTime() < milliSeconds);
-        System.out.println("Resposne expected time: <1000 ms " + "Response Actual time taken: "+response.getTime() + "ms");
+    @And("the response time should be less than {int} seconds")
+    public void verifyResponseTime(int seconds) {
+        Assert.assertTrue(response.getTime() < seconds * 1000);
+
     }
 
     @And("the response should contain place name {string}")
@@ -185,10 +185,10 @@ public class StepDefinitions {
 
     }
 
-    @Then("I verify if response time should be less than {int} milliseconds")
-    public void iVerifyResponseTime(int milliSeconds) {
-        Assert.assertTrue(ApiUtilities.response.getTime() < milliSeconds);
-        System.out.println("Resposne expected time: <1000 ms " + "Response Actual time taken: "+ApiUtilities.response.getTime() + "ms");
+    @Then("I verify if response time should be less than {int} seconds")
+    public void iVerifyResponseTime(int seconds) {
+        Assert.assertTrue(ApiUtilities.response.getTime() < seconds * 1000);
+
     }
 
     @Then("I verify if response content type is {string}")
