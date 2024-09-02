@@ -3,6 +3,7 @@ package org.utilities;
 
 
 import org.json.JSONObject;
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,6 +16,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import static org.junit.Assert.assertEquals;
@@ -206,29 +208,37 @@ public class Utilities {
 
 
     public void checkAllLinks(String strPath) {
+        WebElement countryListDiv = driver.findElement(By.xpath(getElement(strPath)));
+        List<WebElement> links = countryListDiv.findElements(By.tagName("a"));
+        List<String> failedLinks = new ArrayList<>();
 
-        try {
-            WebElement countryListDiv = driver.findElement(By.xpath(getElement(strPath)));
-            List<WebElement> links = countryListDiv.findElements(By.tagName("a"));
-
-            for (WebElement link : links) {
+        for (WebElement link : links) {
+            try {
                 String href = link.getAttribute("href");
                 if (href != null && !href.isEmpty()) {
                     System.out.println("Checking link: " + href);
-                    try {
+
                     int responseCode = getResponseCode(href);
-                    assertEquals(200, responseCode);
-                    System.out.println("Result: "+href + " returned positive response");
-                    } catch (AssertionError ae) {
-                        System.out.println("Assertion failed for link: " + href + ". Response code: " + ae.getMessage());
+
+                    if (responseCode != 200) {
+                        System.out.println("Result: " + href + " returned response code " + responseCode);
+                        failedLinks.add(href +" link failed with response code "+ responseCode);
+                    } else {
+                        System.out.println("Result: " + href + " returned positive response");
                     }
                 }
+            } catch (Exception e) {
+                System.out.println("Exception while checking link: " + e.getMessage());
+                failedLinks.add(link.getAttribute("href"));
             }
+        }
 
-        } catch (Exception e){
-            System.out.println(e.getMessage());
+
+        if (!failedLinks.isEmpty()) {
+            Assert.fail("Some links failed: " + String.join(", ", failedLinks));
         }
     }
+
 
     private int getResponseCode(String urlString) {
         int responseCode = -1;
