@@ -8,11 +8,13 @@
   "Last Name": "//label[contains(text(),'Last Name')]/following-sibling::input",
   "Email": "//label[contains(text(),'Email')]/following-sibling::input",
   "Phone": "//label[contains(text(),'Phone')]/following-sibling::input",
+  "Company": "//label[contains(text(),'Company')]/following-sibling::input",
   "Message": "//label[contains(text(),'Message')]/following-sibling::textarea",
   "checkBox": "//input[@type='checkbox' and @value='I agree']",
   "captchaFrame": "//iframe[@title='reCAPTCHA']",
   "captchaCheckBox": "div.recaptcha-checkbox-checkmark",
   "Worldwide": "//span[@aria-label='Worldwide' and contains(text(), 'Worldwide')]",
   "countryList": "//div[@id='country-list-id']",
-  "Submit": "//button[@name='submit' and @type='submit']"
+  "Submit": "//button[@name='submit' and @type='submit']",
+  "CaptchaCheckBox": "//span[@class='recaptcha-checkbox goog-inline-block recaptcha-checkbox-unchecked rc-anchor-checkbox recaptcha-checkbox-checked']"
 }

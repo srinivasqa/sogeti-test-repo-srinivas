@@ -21,6 +21,7 @@ Feature:Sogeti UI Test task
     Given I enter random input in "Last Name" field
     Given I enter random input in "Email" field
     Given I enter random input in "Phone" field
+    Given I enter random input in "Company" field
     Given I enter random input in "Message" field
     And I click on "checkBox"
     And I switch to captcha frame and select captcha check box

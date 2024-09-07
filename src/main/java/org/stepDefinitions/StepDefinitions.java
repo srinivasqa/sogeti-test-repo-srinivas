@@ -7,12 +7,17 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.utilities.ApiUtilities;
 import org.utilities.RandomDataGenerator;
 import org.utilities.Utilities;
 import java.util.List;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.fail;
+import static org.utilities.Utilities.driver;
 
 
 public class StepDefinitions {
@@ -77,6 +82,8 @@ public class StepDefinitions {
                 String lastName = RandomDataGenerator.getRandomLastName();
                 util.sendKeys(util.getElement(element), lastName);
                 break;
+            case "Company":
+                util.sendKeys(util.getElement(element), "Sogeti");
             case "Email":
                 String email = RandomDataGenerator.generateRandomEmail(RandomDataGenerator.getRandomFirstName(), RandomDataGenerator.getRandomLastName());
                 util.sendKeys(util.getElement(element), email);

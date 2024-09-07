@@ -66,7 +66,7 @@ public class Utilities {
 
     }
 
-    public void visibilityOfElement(WebElement element) {
+    public static void visibilityOfElement(WebElement element) {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(90));
         wait.until(ExpectedConditions.visibilityOf(element));
@@ -163,6 +163,7 @@ public class Utilities {
         WebElement element = driver.findElement(By.cssSelector(getElement("captchaCheckBox")));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", element);
+        verifyCaptcha();
         driver.switchTo().defaultContent();
     }
 
@@ -253,6 +254,15 @@ public class Utilities {
             e.printStackTrace();
         }
         return responseCode;
+    }
+
+    public void verifyCaptcha(){
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(getElement("CaptchaCheckBox"))));
+
+
+
     }
 
 
