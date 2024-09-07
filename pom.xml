@@ -24,7 +24,9 @@
       <includes>
         <include>**/TestRunner.java</include>
       </includes>
-      <testFailureIgnore>true</testFailureIgnore>
+      <systemPropertyVariables>
+        <cucumber.options>--plugin json:target/cucumber-reports/Cucumber.json</cucumber.options>
+      </systemPropertyVariables>
     </configuration>
   </plugin>
   <plugin>
