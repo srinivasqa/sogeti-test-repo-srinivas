@@ -34,6 +34,6 @@ Feature:Sogeti UI Test task
     And I click on "Submit"
     
 
-  Scenario:UI_Test_TC003 Verify user fills contact form and submit
+  Scenario:UI_Test_TC003 Verify all links under Worldwide are working
     When I click on "Worldwide"
     Then I open all links under "countryList" and check if links are working
