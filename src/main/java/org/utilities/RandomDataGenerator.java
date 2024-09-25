@@ -48,6 +48,7 @@ public class RandomDataGenerator {
             message.append(words[random.nextInt(words.length)]).append(" ");
         }
         return message.toString().trim() + ".";
+
     }
 
 }
