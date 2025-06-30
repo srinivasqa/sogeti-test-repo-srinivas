@@ -12,7 +12,7 @@ public class ApiUtilities {
 
 
     public static Response response;
-    public void getReqResBuilder(String url, String endpoint){
+    public void  getReqResBuilder(String url, String endpoint){
 
         RestAssured.baseURI = url;
 
